@@ -1031,6 +1031,9 @@
             }
         </script>
         @endif
+
+        <script>
+            function openGalleryModal(id) {
                 document.getElementById('modal-' + id).classList.add('active');
                 document.body.style.overflow = 'hidden';
             }
@@ -1048,6 +1051,11 @@
                     left: scrollAmount * direction,
                     behavior: 'smooth'
                 });
+            }
+
+            function slideGalleryGrid(direction) {
+                const slider = document.getElementById('gallerySlider');
+                slider.scrollBy({ left: 320 * direction, behavior: 'smooth' });
             }
         </script>
 
