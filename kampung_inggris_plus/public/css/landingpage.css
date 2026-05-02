@@ -44,9 +44,7 @@ nav {
     width: 100%;
     height: 100vh; /* ganti dari 555px ke layar penuh */
     background-color: #000;
-        
 }
-
 
 .carousel-container {
     position: relative;
@@ -76,7 +74,6 @@ nav {
     height: 100vh;
     object-fit: cover;
 }
-
 
 .slide.active {
     opacity: 1;
@@ -324,7 +321,9 @@ nav {
     ); /* default gradient */
     box-shadow: 0 6px 12px rgba(0, 0, 0, 0.05);
     border: 2px solid #ccc; /* nanti diubah per paket */
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 /* WARNA & BADGE MURAH */
@@ -375,7 +374,9 @@ nav {
     background-color: #fffdf5; /* fallback jika gradient gagal */
     box-shadow: 0 6px 12px rgba(24, 0, 91, 0.1);
     border: 2px solid var(--secondary);
-    transition: transform 0.3s ease, box-shadow 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        box-shadow 0.3s ease;
 }
 
 /* 🔄 DITAMBAHKAN: Styling untuk program-item dengan daftar harga */
@@ -680,7 +681,8 @@ body {
 .gallery-frame img.gallery-thumbnail {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #fff;
 }
 .gallery-frame:hover {
     transform: translateY(-5px);
@@ -689,7 +691,8 @@ body {
 .gallery-frame img.gallery-thumbnail {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #fff;
     display: block;
 }
 
@@ -1391,9 +1394,12 @@ body {
 .gallery-thumbnail {
     width: 100%;
     height: 200px;
-    object-fit: cover;
+    object-fit: contain;
+    background: #fff;
     display: block;
-    transition: transform 0.3s ease, filter 0.3s ease;
+    transition:
+        transform 0.3s ease,
+        filter 0.3s ease;
     border-radius: 10px;
 }
 .gallery-thumbnail:hover {
@@ -1681,7 +1687,7 @@ body {
 @media (max-width: 768px) {
     .program-content-container {
         flex-direction: column !important;
-             align-items: center;
+        align-items: center;
     }
 
     .content-image {
@@ -1694,40 +1700,40 @@ body {
         width: 100%;
     }
 
-@media (max-width: 768px) {
-    .program-content-container {
-        flex-direction: column; /* jadi vertikal */
-        background: #fff;
-        border-radius: 12px;
-        box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
-        overflow: hidden;
-        padding: 15px;
-    }
+    @media (max-width: 768px) {
+        .program-content-container {
+            flex-direction: column; /* jadi vertikal */
+            background: #fff;
+            border-radius: 12px;
+            box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+            overflow: hidden;
+            padding: 15px;
+        }
 
-    .content-image {
-        order: -1; /* gambar di atas */
-        width: 100%;
-    }
+        .content-image {
+            order: -1; /* gambar di atas */
+            width: 100%;
+        }
 
-    .content-image img {
-        width: 100%;
-        height: auto;
-        border-radius: 10px;
-    }
+        .content-image img {
+            width: 100%;
+            height: auto;
+            border-radius: 10px;
+        }
 
-    .card-info {
-        width: 100%;
-    }
+        .card-info {
+            width: 100%;
+        }
 
-    .card-info h3 {
-        font-size: 20px;
-        text-align: center;
-        margin-bottom: 10px;
-    }
+        .card-info h3 {
+            font-size: 20px;
+            text-align: center;
+            margin-bottom: 10px;
+        }
 
-    .card-info p {
-        font-size: 14px;
-        text-align: justify;
+        .card-info p {
+            font-size: 14px;
+            text-align: justify;
+        }
     }
-}    
 }
