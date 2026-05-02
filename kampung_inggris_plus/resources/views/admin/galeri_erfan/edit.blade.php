@@ -77,12 +77,12 @@
                     <div class="col-md-3 mb-3">
                         <div class="card shadow-sm">
                             @if ($image->file_type === 'video')
-                                <video class="card-img-top" controls style="max-height:180px;object-fit:cover;">
+                                <video class="card-img-top" controls style="max-height:240px;object-fit:contain;background:#000;width:100%;">
                                     <source src="{{ asset('storage/' . $image->image_path) }}" type="video/mp4">
                                 </video>
                                 <div class="text-center py-1"><span class="badge badge-info"><i class="fas fa-video"></i> Video</span></div>
                             @else
-                                <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top rounded" alt="Gambar Galeri" style="max-height:180px;object-fit:cover;">
+                                <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top rounded" alt="Gambar Galeri" style="max-height:240px;object-fit:contain;width:100%;background:#f8f9fa;">
                             @endif
                             <div class="card-body p-2 text-center">
                                 <button class="btn btn-sm btn-danger btn-block btn-delete-image"

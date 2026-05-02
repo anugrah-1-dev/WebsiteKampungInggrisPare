@@ -25,12 +25,12 @@
             <div class="col-md-3 mb-4">
                 <div class="card">
                     @if ($image->file_type === 'video')
-                        <video class="card-img-top" controls style="max-height:200px;object-fit:cover;">
+                        <video class="card-img-top" controls style="max-height:300px;object-fit:contain;background:#000;width:100%;">
                             <source src="{{ asset('storage/' . $image->image_path) }}" type="video/mp4">
                         </video>
                         <div class="text-center py-1"><span class="badge badge-info"><i class="fas fa-video"></i> Video</span></div>
                     @else
-                        <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top" alt="Foto Galeri Erfan" style="max-height:200px;object-fit:cover;">
+                        <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top" alt="Foto Galeri Erfan" style="max-height:300px;object-fit:contain;width:100%;background:#f8f9fa;">
                     @endif
                     <div class="card-body">
                         <p class="text-muted small">{{ $image->caption ?? '-' }}</p>
