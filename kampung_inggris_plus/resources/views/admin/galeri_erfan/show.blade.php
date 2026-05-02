@@ -24,7 +24,14 @@
         @forelse ($galeri->images as $image)
             <div class="col-md-3 mb-4">
                 <div class="card">
-                    <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top" alt="Foto Galeri Erfan">
+                    @if ($image->file_type === 'video')
+                        <video class="card-img-top" controls style="max-height:200px;object-fit:cover;">
+                            <source src="{{ asset('storage/' . $image->image_path) }}" type="video/mp4">
+                        </video>
+                        <div class="text-center py-1"><span class="badge badge-info"><i class="fas fa-video"></i> Video</span></div>
+                    @else
+                        <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top" alt="Foto Galeri Erfan" style="max-height:200px;object-fit:cover;">
+                    @endif
                     <div class="card-body">
                         <p class="text-muted small">{{ $image->caption ?? '-' }}</p>
                     </div>
@@ -32,7 +39,7 @@
             </div>
         @empty
             <div class="col-12">
-                <p class="text-muted">Belum ada gambar.</p>
+                <p class="text-muted">Belum ada media.</p>
             </div>
         @endforelse
     </div>

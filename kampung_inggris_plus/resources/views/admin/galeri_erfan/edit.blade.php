@@ -50,7 +50,13 @@
                 <div class="form-group">
                     <label for="images">Upload Gambar Baru (Opsional)</label>
                     <input type="file" name="images[]" class="form-control" multiple accept="image/*">
-                    <small class="text-muted">Kosongkan jika tidak ingin menambah gambar baru.</small>
+                    <small class="text-muted">Format: JPG, PNG, GIF, WEBP. Maks 5MB per file.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="videos">Upload Video Baru (Opsional)</label>
+                    <input type="file" name="videos[]" class="form-control" multiple accept="video/*">
+                    <small class="text-muted">Format: MP4, MOV, AVI, WMV, WEBM. Maks 100MB per file.</small>
                 </div>
 
                 <div class="card-footer px-0">
@@ -63,14 +69,21 @@
 
     <div class="card mt-4">
         <div class="card-header">
-            <h5 class="mb-0">Gambar Saat Ini</h5>
+            <h5 class="mb-0">Media Saat Ini</h5>
         </div>
         <div class="card-body">
             <div class="row">
                 @forelse ($galeri->images as $image)
                     <div class="col-md-3 mb-3">
                         <div class="card shadow-sm">
-                            <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top rounded" alt="Gambar Galeri">
+                            @if ($image->file_type === 'video')
+                                <video class="card-img-top" controls style="max-height:180px;object-fit:cover;">
+                                    <source src="{{ asset('storage/' . $image->image_path) }}" type="video/mp4">
+                                </video>
+                                <div class="text-center py-1"><span class="badge badge-info"><i class="fas fa-video"></i> Video</span></div>
+                            @else
+                                <img src="{{ asset('storage/' . $image->image_path) }}" class="card-img-top rounded" alt="Gambar Galeri" style="max-height:180px;object-fit:cover;">
+                            @endif
                             <div class="card-body p-2 text-center">
                                 <button class="btn btn-sm btn-danger btn-block btn-delete-image"
                                     data-id="{{ $image->id }}"
@@ -82,7 +95,7 @@
                     </div>
                 @empty
                     <div class="col-12">
-                        <p class="text-muted">Belum ada gambar yang ditambahkan.</p>
+                        <p class="text-muted">Belum ada media yang ditambahkan.</p>
                     </div>
                 @endforelse
             </div>

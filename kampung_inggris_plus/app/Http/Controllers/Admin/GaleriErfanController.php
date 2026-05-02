@@ -24,11 +24,12 @@ class GaleriErfanController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'title'      => 'required|string|max:255',
-            'description'=> 'nullable|string',
-            'event_date' => 'nullable|date',
-            'status'     => 'required|boolean',
-            'images.*'   => 'image|mimes:jpeg,png,jpg,gif|max:2048',
+            'title'       => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'event_date'  => 'nullable|date',
+            'status'      => 'required|boolean',
+            'images.*'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'videos.*'    => 'nullable|mimes:mp4,mov,avi,wmv,webm|max:102400',
         ]);
 
         $galeri = GaleriErfan::create([
@@ -41,7 +42,14 @@ class GaleriErfanController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('galeri_erfan', 'public');
-                $galeri->images()->create(['image_path' => $path]);
+                $galeri->images()->create(['image_path' => $path, 'file_type' => 'image']);
+            }
+        }
+
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $video) {
+                $path = $video->store('galeri_erfan', 'public');
+                $galeri->images()->create(['image_path' => $path, 'file_type' => 'video']);
             }
         }
 
@@ -65,11 +73,12 @@ class GaleriErfanController extends Controller
         $galeri = GaleriErfan::findOrFail($id);
 
         $request->validate([
-            'title'      => 'required|string|max:255',
-            'description'=> 'nullable|string',
-            'event_date' => 'nullable|date',
-            'status'     => 'required|boolean',
-            'images.*'   => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048',
+            'title'       => 'required|string|max:255',
+            'description' => 'nullable|string',
+            'event_date'  => 'nullable|date',
+            'status'      => 'required|boolean',
+            'images.*'    => 'nullable|image|mimes:jpeg,png,jpg,gif,webp|max:5120',
+            'videos.*'    => 'nullable|mimes:mp4,mov,avi,wmv,webm|max:102400',
         ]);
 
         $galeri->update([
@@ -82,7 +91,14 @@ class GaleriErfanController extends Controller
         if ($request->hasFile('images')) {
             foreach ($request->file('images') as $image) {
                 $path = $image->store('galeri_erfan', 'public');
-                $galeri->images()->create(['image_path' => $path]);
+                $galeri->images()->create(['image_path' => $path, 'file_type' => 'image']);
+            }
+        }
+
+        if ($request->hasFile('videos')) {
+            foreach ($request->file('videos') as $video) {
+                $path = $video->store('galeri_erfan', 'public');
+                $galeri->images()->create(['image_path' => $path, 'file_type' => 'video']);
             }
         }
 

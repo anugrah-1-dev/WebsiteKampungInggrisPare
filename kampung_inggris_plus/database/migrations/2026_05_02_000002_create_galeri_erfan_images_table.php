@@ -12,6 +12,7 @@ return new class extends Migration
             $table->id();
             $table->foreignId('galeri_erfan_id')->constrained('galeri_erfans')->onDelete('cascade');
             $table->string('image_path');
+            $table->enum('file_type', ['image', 'video'])->default('image');
             $table->string('caption')->nullable();
             $table->timestamps();
         });

@@ -48,6 +48,13 @@
                 <div class="form-group">
                     <label for="images">Upload Gambar (Bisa lebih dari satu)</label>
                     <input type="file" name="images[]" class="form-control" multiple accept="image/*">
+                    <small class="text-muted">Format: JPG, PNG, GIF, WEBP. Maks 5MB per file.</small>
+                </div>
+
+                <div class="form-group">
+                    <label for="videos">Upload Video (Bisa lebih dari satu)</label>
+                    <input type="file" name="videos[]" class="form-control" multiple accept="video/*">
+                    <small class="text-muted">Format: MP4, MOV, AVI, WMV, WEBM. Maks 100MB per file.</small>
                 </div>
 
             </div>

@@ -12,6 +12,7 @@ class GaleriErfanImage extends Model
     protected $fillable = [
         'galeri_erfan_id',
         'image_path',
+        'file_type',
         'caption',
     ];
 

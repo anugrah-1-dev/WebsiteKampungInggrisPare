@@ -21,7 +21,11 @@ class LandingPageController extends Controller
     {
         $programs        = Program::orderBy('id', 'asc')->get();
         $galleries       = Gallery::where('status', 1)->with('images')->latest()->get();
-        $galeriErfan     = GaleriErfan::where('status', 1)->with('images')->latest()->get();
+        try {
+            $galeriErfan = GaleriErfan::where('status', 1)->with('images')->latest()->get();
+        } catch (\Exception $e) {
+            $galeriErfan = collect();
+        }
         $offlinePrograms = ProgramOffline::where('is_active', 1)->latest()->get();
         $onlinePrograms  = ProgramOnline::where('is_active', 1)->latest()->get();
         $camps           = ProgramCamp::orderBy('id', 'asc')->get();
