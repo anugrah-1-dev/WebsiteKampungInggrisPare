@@ -492,12 +492,6 @@
                     ],
 
                     [
-                        'text' => 'Galeri Erfan',
-                        'url'  => '/admin/galeri-erfan',
-                        'icon' => 'fas fa-photo-video',
-                    ],
-
-                    [
                         'text' => 'Sosmed',
                         'url'  => '/admin/sosmed',
                         'icon' => 'fas fa-globe',

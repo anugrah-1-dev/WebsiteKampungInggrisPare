@@ -6,7 +6,6 @@ use Illuminate\Http\Request;
 use App\Models\Program;
 use App\Models\Gallery;
 use App\Models\GalleryImage;
-use App\Models\GaleriErfan;
 use App\Models\ProgramOffline;
 use App\Models\ProgramOnline;
 use App\Models\ProgramCamp;
@@ -21,11 +20,6 @@ class LandingPageController extends Controller
     {
         $programs        = Program::orderBy('id', 'asc')->get();
         $galleries       = Gallery::where('status', 1)->with('images')->latest()->get();
-        try {
-            $galeriErfan = GaleriErfan::where('status', 1)->with('images')->latest()->get();
-        } catch (\Exception $e) {
-            $galeriErfan = collect();
-        }
         $offlinePrograms = ProgramOffline::where('is_active', 1)->latest()->get();
         $onlinePrograms  = ProgramOnline::where('is_active', 1)->latest()->get();
         $camps           = ProgramCamp::orderBy('id', 'asc')->get();
@@ -74,7 +68,6 @@ class LandingPageController extends Controller
             'onlinePrograms'  => $onlinePrograms,
             'programs'        => $programs,
             'galleries'       => $galleries,
-            'galeriErfan'     => $galeriErfan,
             'camps'           => $camps,
             'contactServices' => $contactServices,
             'groupedSosmed' => $groupedSosmed,
